@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Today's Shorts · Aerospace Engineering Explainer</title><meta name="description" content="Today's aerospace engineering Shorts, each under the question its Story asked."><link rel="stylesheet" href="../assets/site.css"></head><body><main><header><a class="brand" href="../">Aerospace Engineering Explainer</a><nav><a href="../latest/">Latest Shorts</a><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms of Service</a></nav></header>
+<h1>Today's Shorts</h1>
+<p class="muted">Came from a Story? Find its question below and tap to watch that Short.</p>
+<div id="list"><p class="muted">Loading…</p></div>
+<script>
+(async()=>{const el=document.getElementById('list');
+try{const r=await fetch('shorts.json',{cache:'no-store'});const d=await r.json();
+const items=(d.shorts||[]).slice().sort((a,b)=>(b.published_at||'').localeCompare(a.published_at||''));
+if(!items.length){el.innerHTML='<p class="muted">No Shorts yet today. <a href="https://www.youtube.com/channel/UC2qwTaNG3SNSwqggAJOHsig/shorts">See all Shorts</a>.</p>';return;}
+el.innerHTML='';for(const s of items){const c=document.createElement('div');c.className='card';
+const q=document.createElement('p');q.className='q';q.textContent=s.question||s.title||'';
+const a=document.createElement('a');a.className='pill';a.href='https://youtube.com/shorts/'+encodeURIComponent(s.youtube_id);a.textContent='youtube.com/shorts/'+s.youtube_id;
+c.append(q,a);el.append(c);}
+}catch(e){el.innerHTML='<p class="muted"><a href="https://www.youtube.com/channel/UC2qwTaNG3SNSwqggAJOHsig/shorts">See all Shorts on YouTube</a>.</p>';}})();
+</script>
+<footer>This site and its posting tool use YouTube API Services. See the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Contact: <a href="https://github.com/maheshreddy23/AerospaceEngineeringExplainer-public/issues">open an issue on GitHub</a>.</footer></main></body></html>
